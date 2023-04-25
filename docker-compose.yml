@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  tor:
+    image: redpilllabs/tor:latest
+    container_name: tor
+    restart: unless-stopped
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./data:/usr/share/tor:ro
+      - ./etc/torrc:/etc/tor/torrc:ro
